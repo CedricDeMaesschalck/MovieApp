@@ -23,22 +23,39 @@ const Index = () => {
     >
       {movies.length > 0 ? (
         movies.map((movie) => (
-          movies.map((movie) => (
-           <View 
-            key={movie.id}
-            style={{ marginBottom: 20, alignItems: "center" }}>
-            <Link href={{pathname: "/detail/[id]",params: { id: movie.id.toString() }
-            }}asChild>
-            <Pressable>
-            <Image source={{ uri: movie.posterURL }}
-             style={{ width: 150,height: 225,borderRadius: 8,marginBottom: 8}}resizeMode="cover"/>
-            </Pressable>
-            </Link>
-           </View>))
-           ))
+        <View 
+         key={movie.id}
+         style={{ marginBottom: 20, alignItems: "center" }}
+        >
+        <Link
+        href={{
+          pathname: "/detail/[id]",
+          params: {
+            id: movie.id.toString(),
+            title: movie.title,
+            posterURL: movie.posterURL,
+            rating: movie.rating.toString()
+          }
+        }}asChild>
+          <Pressable>
+           <Image
+            source={{ uri: movie.posterURL }}
+            style={{
+              width: 150,
+              height: 225,
+              borderRadius: 8,
+              marginBottom: 8
+            }}
+            resizeMode="cover"
+          />
+         </Pressable>
+        </Link>
+       </View>
+      ))
       ) : (
-        <Text>Films laden...</Text>
+       <Text>Films laden...</Text>
       )}
+
     </View>
     </ScrollView> 
   );
